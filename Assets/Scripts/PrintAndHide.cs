@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class ConsolePrint : MonoBehaviour
+public class PrintAndHide : MonoBehaviour
 {
     int frameCounter = 3;
     public Renderer rend;
@@ -17,6 +17,15 @@ public class ConsolePrint : MonoBehaviour
     void Update()
     {
         frameCounter = frameCounter + 1;
-        Debug.Log(gameObject.name + "" + frameCounter);
+        Debug.Log(gameObject.name + ":" + frameCounter);
+
+        if (gameObject.CompareTag("Red") && frameCounter >= 100)
+        {
+            gameObject.SetActive(false);
+        }
+        else if (gameObject.CompareTag("Blue") && (frameCounter >= 150 && frameCounter <= 250))
+        {
+            rend.enabled = false;
+        }
     }
 }
